@@ -1,8 +1,8 @@
 import "~/styles/globals.css";
-
-import { GeistSans } from "geist/font/sans";
-
 import { TRPCReactProvider } from "~/trpc/react";
+import Navbar from "./_components/Navbar";
+import SidebarClient from "./_components/sidebar";
+
 
 export const metadata = {
   title: "Create T3 App",
@@ -16,9 +16,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html >
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <div className="flex w-full">
+            <div className="w-72">
+              <SidebarClient />
+            </div>
+            <div className="w-full">
+              <Navbar />
+              {children}
+            </div>
+          </div>
+        </TRPCReactProvider>
       </body>
     </html>
   );
